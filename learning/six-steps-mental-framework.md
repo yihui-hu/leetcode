@@ -40,8 +40,6 @@ Write down test / edge cases.
 
 Describe and write down the algorithm. Form a clear idea before the implementation (in writing or comments). Don't jump to code.
 
-<br>
-
 Craft a solution with appropriate data structues and algorithms.
 
 A potential first draft of the algorithm:
