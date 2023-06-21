@@ -21,9 +21,7 @@ class Solution(object):
         for index, char in enumerate(s):
           # if char is closing bracket, check stack
           if char in closing_brackets:
-            if stack and closing_brackets[char] != stack[-1]:
-              return False
-            elif stack:
+            if stack and closing_brackets[char] == stack[-1]:
               stack.pop()
             else:
               return False
@@ -31,8 +29,10 @@ class Solution(object):
           else:
             stack.append(char)
         
+        # if stack is empty
         if not stack:
           return True
+        # if stack still has leftover bracket(s)
         else:
           return False
 
