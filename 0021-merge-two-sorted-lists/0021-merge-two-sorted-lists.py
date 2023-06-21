@@ -24,9 +24,13 @@ class Solution(object):
 
         # while there are still items in list1 and list2
         while list1 and list2:
+            # if val at l1 < val at l2
             if list1.val < list2.val:
+              # put l1 into new dummy list
               end.next = list1
+              # move pointer to next item in l1
               list1 = list1.next
+            # same logic for inverse condition
             else:
               end.next = list2
               list2 = list2.next
