@@ -23,4 +23,40 @@ class Solution(object):
 
         # [::-1] reverses a string, so just check for equality
         return processedString == processedString[::-1]
+
+
+        """
+        how about we try solving this without using alnum or
+        without using extra memory? use two finger algorithm, L and R
+        from both ends, keep incrementing L and decrementing R until
+        they're the same or L > R
+        to avoid using alnum, use ASCII value
+        it will still be a linear time algorithm
+        """
+
+        l, r = 0, len(s) - 1
+
+        while l < r:
+          # increment / decrement l and r while
+          # they are NOT alphanumeric
+          while l < r and not alphaNum(s[l]):
+            l += 1
+          while r > l and not alphaNum(s[r]):
+            r -= 1
+
+          # ok, both are alphanumeric, now
+          # check if they are the same character
+          if s[l].lower() != s[r].lower():
+            return False
+
+
+        # ord() gets the ascii value of characters
+        # this is our own custom alphaNum func, 
+        # highly customizable
+        def alphaNum(self, c):
+          return (ord('A') <= ord(c) <= ord('Z') or
+                  ord('a') <= ord(c) <= ord('z') or
+                  ord('0') <= ord(c) <= ord('9'))
+
+
         
