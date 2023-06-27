@@ -33,4 +33,19 @@ class Solution(object):
         
         return True
 
+        """
+        there's a one liner in python which basically does
+        what we just did
+        return Counter(s) == Counter(t)
+        """
+
+        """
+        how can we solve this with O(1) memory?
+        we sort the strings, then iterate through the strings!
+        another one liner:
+        return sorted(s) == sorted(t)
+        
+        but sorting takes more time, O(n log n) worst time
+        """
+
 
