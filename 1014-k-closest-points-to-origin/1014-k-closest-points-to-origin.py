@@ -38,10 +38,9 @@ class Solution(object):
 
         # now add back to result array by popping
         # elements off the heap
-        while k > 0:
+        for i in range(k):
           dist, x, y = heapq.heappop(minHeap)
           result.append((x, y))
-          k -= 1
         
         return result
 
