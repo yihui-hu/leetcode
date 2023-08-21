@@ -26,6 +26,7 @@ class Solution(object):
             row = []
             for i in range(qLen):
                 curr = q.popleft() # do NOT use pop
+                # rmb to check that curr is NOT null, could be for root
                 if (curr):
                     row.append(curr.val)
                     if curr.left:
