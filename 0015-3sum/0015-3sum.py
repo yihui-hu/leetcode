@@ -45,9 +45,17 @@ class Solution(object):
                     l += 1
                 else:
                     res.append([value, nums[l], nums[r]]) # update results array
-                    # update pointers
+                    
+                    # update pointers, ONLY for this two sum II part of the problem
+                    # essentially we fix a, but we want to make sure
+                    # we cover all bs and cs that make it add up to 0
+                    # also we only shift left pointer because
+                    # the if loops above cover the other pointer
+                    
                     l += 1
-                    while nums[l] == nums[l - 1] and l < r:
+                    while nums[l] == nums[l - 1] and l < r:  
+                        # account for same vals
+                        # and l must not cross r
                         l += 1
         
         return res
