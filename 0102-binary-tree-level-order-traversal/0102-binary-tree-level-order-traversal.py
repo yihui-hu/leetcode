@@ -27,8 +27,10 @@ class Solution(object):
             for i in range(qLen):
                 curr = q.popleft() # do NOT use pop
                 # rmb to check that curr is NOT null, could be for root
-                if (curr):
+                if curr:
                     row.append(curr.val)
+                    # actually unnecessary, since we already check in the previous
+                    # line if cur is null
                     if curr.left:
                         q.append(curr.left)
                     if curr.right:
