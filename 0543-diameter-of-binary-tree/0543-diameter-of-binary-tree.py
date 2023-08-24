@@ -16,6 +16,28 @@ class Solution:
 
       height = take 1 + max(left_node_height, right_node_height)
       diameter = left_node_height + right_node_height + 2
+
+           1
+         /   \
+        2     3
+       / \
+      4   5
+    
+      with this solution, we start from the bottom
+
+      4 has a height of 0 (1 + max(left, right), where left, right = -1)
+      5 has a height of 0 (same as above)
+      2 has a height of 1
+      etc. etc.
+
+      we update the diameter by taking left subtree height, right st height,
+      and add 2 because of the edges that connect them
+
+      so for 4, it has diameter of -1 + -1 + 2 = 0, same for 5
+      and for 2, it has diameter of 0 + 0 + 2, which we can see is true
+
+      at any point during the recursion, we update the max diameter 
+      we've seen so far 
       """
 
       res = [0]
