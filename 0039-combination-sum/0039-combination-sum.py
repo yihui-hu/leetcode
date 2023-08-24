@@ -4,7 +4,7 @@ class Solution:
       """
       use a decision tree of sorts
       for each node, we make the decision to include or exclude the current
-      elem candidates
+      elem candidates, in order to get all unique combinations
 
       time complexity is O(2^target)
       """
@@ -29,7 +29,7 @@ class Solution:
         curr.append(candidates[i])
         dfs(i, curr, total + candidates[i])
 
-        curr.pop() # remove the last decision we made
+        curr.pop() # remove the elem from the last decision we made
 
         # second decision where we exclude the candidate
         dfs(i + 1, curr, total) 
