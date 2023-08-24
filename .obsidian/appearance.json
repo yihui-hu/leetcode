@@ -1,0 +1,12 @@
+{
+  "accentColor": "",
+  "enabledCssSnippets": [
+    "accent-blue",
+    "typography",
+    "sf-symbols",
+    "pickiness",
+    "highlight-color",
+    "cleanup",
+    "code-color"
+  ]
+}
