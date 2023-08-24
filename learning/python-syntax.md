@@ -45,7 +45,7 @@ cities = sorted(cities, key=lambda city: (city['population'] / city['area']))
 ```
 
 ## Turn strings into integers
-`
+
 ```python
 c = '2'
 num = int(c) # becomes 2 of integer type
