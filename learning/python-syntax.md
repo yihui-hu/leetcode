@@ -1,6 +1,7 @@
 ## General Info
 
 Python has 4 built-in data types: lists, tuples, sets, and dictionaries, all with different qualities and usage.
+
 ## Sorting
 
 ```python
@@ -58,6 +59,44 @@ Some examples include:
 - Lists
 - Tuples
 - Strings
+
+## Enumeration
+
+The `enumerate()` function adds a counter to an interable and returns it.
+
+```python
+languages = ["python", "java", "c++"]
+
+enumerate_prime = enumerate(languages)
+
+print(list(enumerate_prime))
+
+# output = [(0, "python"), (1, "java"), (2, "c++")]
+```
+
+Syntax of `enumerate()` is:
+
+```python
+enumerate(iterable, start = 0)
+
+# iterable = a sequence, iterator or objects that support iteration
+
+# start (optional) = starts counting from this number, default is 0
+```
+
+Usage:
+
+```python
+nums = ["a", "b", "c"]
+
+for index, value in enumerate(nums):
+	print(index, value)
+
+# 0 a
+# 1 b
+# 2 c
+```
+
 ## Shallow vs deep copy
 
 Performed using the copy library:
@@ -83,7 +122,7 @@ The difference between shallow and deep copying is only relevant for *compound o
 
 ## Lists
 
-Basically a dynamic array
+Basically a dynamic array.
 
 ```python
 nums = [1, 2, 3] # declaring a list
@@ -128,7 +167,7 @@ chars[-3::-1] # everything except last two items, reversed
 ```
 
 ![[python_lists_time_complexity.png]]
-## Dictionary
+## Dictionary / Maps
 
 ```python
 dict = {} # creates empty dictionary
@@ -231,24 +270,6 @@ def findKthLargest(self, nums, k):
 
 ## Set
 
-
-
-## Destructuring in loops
-
-```python
-directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
-
-for row, col in directions:
-	print(row, col)
-
-# 0, 1, 0, -1, 1, 0, -1, 0
-
-for direction in directions:
-	print(direction[0], direction[1])
-
-# prints same thing
-```
-
 ## Declaring a class in Python
 
 Syntax:
@@ -273,4 +294,71 @@ class Node:
 	# other methods
 	def print_val():
 		print(self.val)
+```
+## Power
+
+```python
+num = 2
+num_squared = 2 ** 2
+print(num_squared) # prints 4
+```
+## Division
+
+When an integer is divided, the result is rounded to the nearest integer and is denoted by the symbol `//`. The floating-point number `/` stands for floating division, which returns the quotient as a floating-point number.
+
+```python
+print(10 / 3) # prints 3.33
+print(10 // 3) # prints 3
+```
+
+## For loops
+
+### General:
+
+```python
+nums = [(0, "a"), (1, "b"), (2, "c")]
+
+for i in range(len(nums)):
+  print(nums[i][0], nums[i][1])
+  
+# 0 a
+# 1 b
+# 2 c
+```
+
+### Enumeration:
+
+```python
+nums = ["a", "b", "c"]
+
+for index, value in enumerate(nums):
+	print(index, value)
+```
+
+### Destructuring:
+
+```python
+nums = [(0, "a"), (1, "b"), (2, "c")]
+
+for index, value in nums:
+	print(index, value)
+
+# 0 a
+# 1 b
+# 2 c
+
+directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+
+for row, col in directions:
+	print(row, col)
+
+# 0, 1
+# 0, -1
+# 1, 0 
+# -1, 0
+
+for direction in directions:
+	print(direction[0], direction[1])
+
+# prints same thing
 ```

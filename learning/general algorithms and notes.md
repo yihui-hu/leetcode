@@ -78,3 +78,58 @@ From left to right, level order
 
 A trie (pronounced `"try"`) is special kind of tree – it is a *prefix* tree used to efficiently store and retrieve strings. It's commonly used for things like autocomplete and spellcheckers.
 
+## Dijkstra's algorithm
+
+## Floyd Warshall's algorithm
+
+## Fibonacci heap
+
+## Binary heap
+
+## Min/max heap
+
+##
+
+## Floyd's cycle finding algorithm (fast and slow pointers)
+
+Establish a `slow` and `fast` pointer where `fast` moves 2 steps and `slow` moves 1 step:
+
+```python
+while fast and fast.next:
+	fast = fast.next.next;
+	slow = slow.next;
+```
+
+Useful for the following problems:
+- Finding middle of linked list
+	- Use `fast` and `slow` pointers: `slow` will be in middle of list (2nd middle if if even number) once `fast` reaches the end
+- Determining if linked list is palindrome
+	- Find middle pointer using `slow`, reverse second half of linked list, then use `head` and `fast` to 'walk' forward and backward and determine if LL is palindromic
+- Detecting a cycle
+	- Eventually the `slow` and `fast` pointer will meet 
+
+```python
+function detectCycle(head) {  
+	fast = slow = head  
+	
+	while fast and fast.next {  
+		fast = fast.next.next  
+		slow = slow.next  
+		if fast === slow return true  
+	}  
+	
+	return false  
+}
+```
+
+## Getting digits from number
+
+```python
+n = 100
+output = 0
+
+while n:
+	digit = n % 10
+	output += digit
+	n = n // 10 # move to the next place
+```
