@@ -1,5 +1,5 @@
-class Solution(object):
-    def isValid(self, s):
+class Solution:
+    def isValid(self, s: str) -> bool:
         """
         :type s: str
         :rtype: bool
@@ -18,7 +18,7 @@ class Solution(object):
 
         stack = []
         # enumerate over brackets
-        for index, char in enumerate(s):
+        for char in s:
           # if char is closing bracket, check stack
           if char in closing_brackets:
             # if match, pop bracket
@@ -31,12 +31,9 @@ class Solution(object):
           else:
             stack.append(char)
         
-        # EDGE CASE: if stack is empty
+        # if stack is empty, means all matched
         if not stack:
           return True
         # if stack still has leftover bracket(s)
         else:
           return False
-
-
-
