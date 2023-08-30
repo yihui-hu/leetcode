@@ -1,22 +1,10 @@
-class Solution(object):
-    def removeElement(self, nums, val):
-        """
-        :type nums: List[int]
-        :type val: int
-        :rtype: int
-        """
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+      index = 0
 
-        """
-        testing update
-        """
-
-        k = 0
-
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        
-        return k
-
-        
+      for num in nums:
+        if num != val:
+          nums[index] = num
+          index += 1
+      
+      return index
