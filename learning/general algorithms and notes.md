@@ -88,8 +88,6 @@ A trie (pronounced `"try"`) is special kind of tree – it is a *prefix* tree u
 
 ## Min/max heap
 
-##
-
 ## Floyd's cycle finding algorithm (fast and slow pointers)
 
 Establish a `slow` and `fast` pointer where `fast` moves 2 steps and `slow` moves 1 step:

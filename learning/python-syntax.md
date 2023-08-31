@@ -182,6 +182,7 @@ words = {
 dict.keys() # returns list of keys
 dict.values() # returns values of keys
 dict.get('a') # returns value for specified key, 1
+dict.get('a', 0) # if 'a' is not in dict, return default value of 0
 dict.items() # returns [('a', 1), ('b', 2), ('c', 3)], i.e. a list of dictionary's *tuple* pairs
 dict.copy() # returns a copy of the dictionary
 dict.pop('a') # pops key-value pair with that key
@@ -196,6 +197,10 @@ if key in dict:
 	dict[key] += 1 
 else: 
 	dict[key] = 1
+
+# MOST USEFUL !
+for char in string:
+	map[char] = 1 + map.get(char, 0)
 ```
 ## Counter
 
@@ -361,4 +366,20 @@ for direction in directions:
 	print(direction[0], direction[1])
 
 # prints same thing
+```
+
+### Going backwards:
+
+```python
+# iterate over list in reverse order
+# step value is 1 (i.e. third arg)
+for i in range(len(s) - 1, -1, -1):
+	# do stuff
+```
+
+## Initialising values in array
+
+```python
+dp = [0] * 5 # [0, 0, 0, 0, 0]
+dp = [False] * (len(s) + 1)
 ```
