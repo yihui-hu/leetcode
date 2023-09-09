@@ -56,6 +56,25 @@ class Solution(object):
         
         and we're done
         """
+
+        """
+        EASY TO UNDERSTAND SOLN, BUT WILL RUN INTO TIMEOUT
+        n = len(nums)
+        # initialize our prefix / postfix arrays
+        left, right = [1] * n, [1] * n
+        res = []
+
+        for i in range(1, n):
+          left[i] = left[i - 1] * nums[i - 1]
+
+        for i in range(1, n):
+          right[i] = right[i - 1] * nums[::-1][i - 1]
+
+        for i in range(n):
+          res.append(left[i] * right[::-1][i])
+        
+        return res
+        """
         
         res = [1] * (len(nums))
         
