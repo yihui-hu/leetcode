@@ -11,10 +11,26 @@ class Solution(object):
         :rtype: List[int]
         """
 
+        """
+        note: we can't just simply traverse right nodes, see this tree:
+
+           1
+          / \
+         3   6
+          \
+           5
+
+        the person will see 1, 6 AND 5
+
+        what we need to do is perform level order traversal
+        and get the rightmost node of each level
+        """
+
         from collections import deque
 
         res = []
-        q = deque([root])
+        q = deque()
+        q.append(root) # or just do q = deque([root]) above
         
         while q:
           rightSide = None 
@@ -30,6 +46,7 @@ class Solution(object):
               q.append(node.left)
               q.append(node.right)
           
+          # don't forget to add rightmost node of this curr loop / level to res
           if rightSide:
             res.append(rightSide.val)
         
