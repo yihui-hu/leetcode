@@ -1,44 +1,29 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def levelOrder(self, root):
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         """
-        :type root: TreeNode
-        :rtype: List[List[int]]
+        basically BFS
         """
-        
-        """
-        basically BFS,
-        need queue to add nodes and their children when we pop them off
-        """
-        
+
+        from collections import deque
+
         res = []
-        
-        q = collections.deque()
-        q.append(root)
-        
-        while q:
-            qLen = len(q)
-            row = []
-            for i in range(qLen):
-                curr = q.popleft() # do NOT use pop
-                # rmb to check that curr is NOT null, could be for root
-                if curr:
-                    row.append(curr.val)
-                    # actually unnecessary, since we already check in the previous
-                    # line if cur is null
-                    if curr.left:
-                        q.append(curr.left)
-                    if curr.right:
-                        q.append(curr.right)
-            if row: # ensures we're not adding empty levels
-                res.append(row)
-            
-        
+        stack = deque([root])
+
+        while stack:
+          level = []
+          for i in range(len(stack)):
+            curr = stack.popleft()
+            if curr:
+              level.append(curr.val)
+              stack.append(curr.left)
+              stack.append(curr.right)
+          if len(level) > 0:
+            res.append(level)
+
         return res
-        
-            
