@@ -10,12 +10,11 @@ class Solution:
         minHeap = []
         
         for coords in points:
-          dist = sqrt((coords[0] - 0) ** 2 + (coords[1] - 0) ** 2)
+          # we don't need to calculate sqrt
+          dist = (coords[0] - 0) ** 2 + (coords[1] - 0) ** 2
           minHeap.append((dist, coords))
         
         heapq.heapify(minHeap)
-
-        print(minHeap)
 
         res = []
         for i in range(k):
