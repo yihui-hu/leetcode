@@ -50,16 +50,29 @@ class Solution:
       return dfs(root)
       """
 
-      # define boundaries via left and right
-      def valid(node, left, right):
+      # # define boundaries via left and right
+      # def valid(node, left, right):
+      #   if not node:
+      #     return True
+        
+      #   if not (node.val < right and node.val > left):
+      #     return False
+        
+      #   # have to check the following cond: left < node.left < node.val
+      #   return valid(node.left, left, node.val) and valid(node.right, node.val, right)
+      
+      # # -infinity < root < infinity, since the root can be any value
+      # return valid(root, float("-inf"), float("inf"))
+
+      def check_valid(node, leftBound, rightBound):
         if not node:
           return True
         
-        if not (node.val < right and node.val > left):
+        if not (node.val < rightBound and node.val > leftBound):
           return False
         
-        # have to check the following cond: left < node.left < node.val
-        return valid(node.left, left, node.val) and valid(node.right, node.val, right)
+        valid_left_subtree = check_valid(node.left, leftBound, node.val)
+        valid_right_subtree = check_valid(node.right, node.val, rightBound)
+        return valid_left_subtree and valid_right_subtree
       
-      # -infinity < root < infinity, since the root can be any value
-      return valid(root, float("-inf"), float("inf"))
+      return check_valid(root, float("-inf"), float("inf"))
