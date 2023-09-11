@@ -47,6 +47,8 @@ bfs(visited, graph, '5')
 Instead of using stacks, we use recursion in order to traverse deeper and deeper into the graph or tree, processing each one and then escaping to outer functions, checking if we've visited them already as well
 
 ```python
+# this is graph implementation
+
 graph = {
   '5' : ['3','7'],
   '3' : ['2', '4'],

@@ -4,6 +4,11 @@ Python has 4 built-in data types: lists, tuples, sets, and dictionaries, all wit
 
 ## Sorting
 
+Some ways to sort:
+- `bisect.insort(arr, num)`
+- `sorted(arr, key=lambda x:x[0])`
+- `arr.sort(key=lambda x:x[0])`
+
 ```python
 nums = [3, 4, 6, 5, 2, 1]
 nums.sort() # [1, 2, 3, 4, 5, 6]
@@ -42,7 +47,7 @@ cities = cities.sort(key = lambda city: city["population"])
 cities = cities.sort(key = lambda city: -city["population"])
 
 # lambda is still a fn, so you we can do some calculation
-cities = sorted(cities, key=lambda city: (city['population'] / city['area']))
+cities = sorted(cities, key = lambda city: (city['population'] / city['area']))
 ```
 
 ## Turn strings into integers
@@ -202,6 +207,12 @@ else:
 for char in string:
 	map[char] = 1 + map.get(char, 0)
 ```
+
+## defaultdict
+
+The Python [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) type behaves almost exactly like a regular Python dictionary, but if you try to access or modify a missing key, then `defaultdict` will automatically create the key and generate a default value for it. This makes `defaultdict` a valuable option for handling missing keys in dictionaries.
+
+
 ## Counter
 
 ```python
@@ -254,12 +265,12 @@ queue.count(elem) # returns no. of occurences of elem
 queue.reverse() # reverses order of elems
 ```
 
-## Heapq
+## [Heapq](https://docs.python.org/3/library/heapq.html)
 
 Most commonly used to implement a priority queue.
 
 `heapq.heapify()` is an *in-place* heapify and can be done in O(n).
-`heapq.heappush()` and `heapq.heappop` are O(logn).
+`heapq.heappush()` and `heapq.heappop()` are O(logn).
 
 ```python
 import heapq
@@ -273,6 +284,31 @@ def findKthLargest(self, nums, k):
 	return heappq.heappop(heap) # do one last pop to return Kth largest element
 ```
 
+```python
+# returns a list with n largest elements from the dataset iterable
+heapq.nlargest(n, iterable, key=None)
+
+# same as above but the n smallest element
+heapq.nsmallest(n, iterable, key=None)
+
+# these perform best for smaller values of n. for larger values, use the sorted() function
+```
+
+```python
+# implementing heap sort in python
+
+def heapsort(iterable):
+	h = []
+	for value in iterable:
+		heappush(h, value)
+
+	sorted = []
+	for i in range(len(h)):
+		sorted.append(heappop(h))
+
+heapsort([1, 4, 6, 2, 5, 3])
+# [1, 2, 3, 4, 5, 6]
+```
 ## Set
 
 ## Declaring a class in Python
@@ -299,6 +335,10 @@ class Node:
 	# other methods
 	def print_val():
 		print(self.val)
+
+# x = Node(x, None)
+
+```
 ```
 ## Power
 
