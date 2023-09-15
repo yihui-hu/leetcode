@@ -1,35 +1,43 @@
-from collections import deque
-from typing import List
+class Solution(object):
+    def orangesRotting(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
 
-class Solution:
-    def orangesRotting(self, grid: List[List[int]]) -> int:
-        q = deque()
-        time, fresh = 0, 0
-
-        # initialize queue and keep track of fresh
         ROWS, COLS = len(grid), len(grid[0])
+
+        fresh = 0
+        time = 0
+        queue = collections.deque()
+        directions = [[0, 1], [1, 0], [-1, 0], [0, -1]]
+
+        # first keep track of fresh oranges and add rotten ones to queue
         for r in range(ROWS):
-            for c in range(COLS):
-                if grid[r][c] == 2:
-                    q.append([r, c])
-                elif grid[r][c] == 1:
-                    fresh += 1
-        
-        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+          for c in range(COLS):
+            if grid[r][c] == 2:
+              queue.append((r, c))
+            elif grid[r][c] == 1:
+              fresh += 1
 
-        # now, run through queue and perform multi source BFS
-        while q and fresh > 0:
-            # to perform multi source BFS, pop all items off and run BFS same time
-            for _ in range(len(q)):
-                r, c = q.popleft()
-                for r2, c2 in directions:
-                    new_r, new_c = r + r2, c + c2
+        # while queue has rotten AND fresh > 0 (need to break out of loop)
+        # for each 'level' of the queue we pop off and turn surrounding 
+        # oranges rotten, decrementing fresh, adding new rotten o's to queue
+        # and at each level we increment time
+        while queue and fresh > 0:
+          for _ in range(len(queue)):
+            row, col = queue.popleft()
+            for dr, dc in directions:
+              new_row = row + dr
+              new_col = col + dc
 
-                    if 0 <= new_r < ROWS and 0 <= new_c < COLS and grid[new_r][new_c] == 1:
-                        grid[new_r][new_c] = 2
-                        q.append([new_r, new_c])
-                        fresh -= 1
+              if new_row in range(ROWS) and new_col in range(COLS) and grid[new_row][new_col] == 1:
+                grid[new_row][new_col] = 2
+                queue.append((new_row, new_col))
+                fresh -= 1
+          time += 1
 
-            time += 1
-        
         return time if fresh == 0 else -1
+
+          
+        
