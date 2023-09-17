@@ -1,33 +1,21 @@
-class Solution(object):
-    def subsets(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        """
-
-        """
-        imagine a tree and perform DFS
-        for each number in nums, we make a decision to either include or exclude it from the eventual unique subset
-        """
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        
         result = []
-
         subset = []
+
         def dfs(index):
-          if (index >= len(nums)):
-            # we've DFSed all the way to the bottom leaf
-            # append the unique subset to our array
+          if index >= len(nums):
             result.append(list(subset))
             return
-
-          # 1. decision to INCLUDE current number in subset
+          
+          # decision to include current num in subset
           subset.append(nums[index])
           dfs(index + 1)
 
-          # 2. decision to EXCLUDE current number in subset
+          # decision to exclude current num in subset
           subset.pop()
           dfs(index + 1)
         
         dfs(0)
         return result
-
-        
