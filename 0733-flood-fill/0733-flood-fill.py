@@ -8,6 +8,7 @@ class Solution:
       rows, cols = len(image), len(image[0])
       og_color = image[sr][sc]
 
+      # without this edge case, the program fails because it recurses too deep
       if image[sr][sc] == color:
         return image
 
