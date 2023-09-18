@@ -12,6 +12,8 @@ class Solution:
       res = []
 
       def dfs(index, candidate):
+        # can speed things up by passing total into dfs as param
+        # instead of calculating sum each time
         if sum(candidate) == target:
           res.append(candidate.copy())
           return
